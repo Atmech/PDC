@@ -146,7 +146,11 @@ export const menuData = {
       highlight: 'Biscoff White Edition',
       storyNote: 'Creamy white brownie body with caramelized biscuit top notes.',
       accentTone: 'cream',
-      images: ['https://images.unsplash.com/photo-1594833246835-cdb0e5178657?q=80&w=1000&auto=format&fit=crop'],
+      images: [
+        '/white_brownies/biscoff_white_brownie/biscoff-white-1.jpg',
+        '/white_brownies/biscoff_white_brownie/biscoff-white-2.jpg',
+        '/white_brownies/biscoff_white_brownie/biscoff-white-3.jpg',
+      ],
     },
     {
       id: 9,
@@ -214,7 +218,11 @@ export const menuData = {
       highlight: 'Classic White',
       storyNote: 'Clean, buttery crumb with generous white-chocolate pockets.',
       accentTone: 'cream',
-      images: ['https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?q=80&w=1000&auto=format&fit=crop'],
+      images: [
+        '/white_brownies/classic_white_brownie/classic-white-1.jpg',
+        '/white_brownies/classic_white_brownie/classic-white-2.jpg',
+        '/white_brownies/classic_white_brownie/classic-white-3.jpg',
+      ],
     },
   ],
   cakes: [
@@ -234,7 +242,11 @@ export const menuData = {
       highlight: 'Heritage Bestseller',
       storyNote: 'A timeless Parsi-style tea cake with rich mawa depth.',
       accentTone: 'copper',
-      images: ['https://images.unsplash.com/photo-1626803775151-61d756612f97?q=80&w=1000&auto=format&fit=crop'],
+      images: [
+        '/cakes/butter_mawa_cake/butter-mawa-1.jpg',
+        '/cakes/butter_mawa_cake/butter-mawa-2.jpg',
+        '/cakes/butter_mawa_cake/butter-mawa-3.jpg',
+      ],
     },
     {
       id: 14,
@@ -251,26 +263,13 @@ export const menuData = {
       highlight: 'Nut-Loaded Cake',
       storyNote: 'Dense cocoa body with abundant walnut texture and crunch.',
       accentTone: 'copper',
-      images: ['https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000&auto=format&fit=crop'],
+      images: [
+        '/cakes/butter_choco_walnut_cake/butter-choco-walnut-1.jpg',
+        '/cakes/butter_choco_walnut_cake/butter-choco-walnut-2.jpg',
+        '/cakes/butter_choco_walnut_cake/butter-choco-walnut-3.jpg',
+      ],
     },
-    {
-      id: 15,
-      name: 'Butter Mawa Cake Rusk',
-      subtitle: 'Cake Toast',
-      description:
-        'Fresh small-batch mawa cake toasted to a perfect balance of softness and crunch. A comforting, homemade-style rusk for evening chai.',
-      price: 400,
-      salePrice: 300,
-      weight: '450 - 500 gms',
-      isNew: true,
-      isBestseller: true,
-      ingredients: ['Mawa Cake', 'Pure Butter', 'Toasted Finish'],
-      icons: ['🍞', '💛', '☕'],
-      highlight: 'New Rusk Drop',
-      storyNote: 'Classic mawa flavor in a crisp-yet-soft tea-time toast.',
-      accentTone: 'copper',
-      images: ['https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=1000&auto=format&fit=crop'],
-    },
+
   ],
   tubs: [
     {
