@@ -1,14 +1,35 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { MessageCircle, X } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { ChevronLeft, ChevronRight, MessageCircle, X } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 const focusableSelector =
   'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+
+const toneClasses = {
+  copper: 'from-copper-soft/28 via-brand-gold/34 to-brand-lemon/26',
+  chocolate: 'from-brand-mocha/32 via-copper-glow/24 to-brand-gold/24',
+  cream: 'from-brand-cream/58 via-brand-sky/24 to-brand-lemon/24',
+};
 
 export const PremiumProductModal = ({ product, onClose }) => {
   const reducedMotion = useReducedMotion();
   const dialogRef = useRef(null);
   const closeButtonRef = useRef(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    setCurrentImageIndex(0);
+  }, [product]);
+
+  const nextImage = () => {
+    if (!product) return;
+    setCurrentImageIndex((prev) => (prev + 1) % product.images.length);
+  };
+
+  const prevImage = () => {
+    if (!product) return;
+    setCurrentImageIndex((prev) => (prev - 1 + product.images.length) % product.images.length);
+  };
 
   useEffect(() => {
     if (!product) return undefined;
@@ -85,18 +106,68 @@ export const PremiumProductModal = ({ product, onClose }) => {
             ref={closeButtonRef}
             type="button"
             onClick={onClose}
-            className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-copper-soft/25 bg-white/80 text-ink transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-soft"
+            className="absolute right-4 top-4 z-20 inline-flex h-10 w-10 items-center justify-center rounded-full border border-copper-soft/25 bg-white/80 text-ink transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-soft"
           >
             <X className="h-4 w-4" />
           </button>
 
           <div className="grid gap-6 sm:grid-cols-[0.8fr_1.2fr]">
-            <div className="relative overflow-hidden rounded-3xl border border-copper-soft/25 bg-gradient-to-br from-copper-soft/25 via-brand-gold/20 to-white p-6">
-              <div className="absolute inset-0 showroom-noise opacity-70" />
-              <div className="relative z-10">
-                <p className="text-xs uppercase tracking-[0.2em] text-copper-soft/80">{product.highlight || 'Atelier Pick'}</p>
-                <p className="mt-4 text-7xl">{product.icons[0] === '🍫' ? '🍪' : product.icons[0]}</p>
-                <p className="mt-5 text-sm leading-relaxed text-ink-muted">{product.storyNote || product.description}</p>
+            <div className="group relative aspect-square overflow-hidden rounded-3xl border border-copper-soft/25 bg-white sm:aspect-[0.9/1]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={product.images[currentImageIndex]}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="absolute inset-0"
+                >
+                  <img
+                    src={product.images[currentImageIndex]}
+                    alt={product.name}
+                    className="h-full w-full object-cover opacity-90"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${toneClasses[product.accentTone] || toneClasses.copper} mix-blend-multiply opacity-60`} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-cream-ice/95 via-cream-ice/20 to-transparent opacity-60" />
+                </motion.div>
+              </AnimatePresence>
+
+              {product.images.length > 1 && (
+                <>
+                  <div className="absolute inset-x-0 bottom-4 z-20 flex justify-center gap-2">
+                    {product.images.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentImageIndex(index)}
+                        className={`h-2 w-2 rounded-full transition-all ${index === currentImageIndex ? 'bg-copper-soft w-4' : 'bg-copper-soft/40 hover:bg-copper-soft/60'
+                          }`}
+                        aria-label={`Go to image ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+
+                  <button
+                    onClick={prevImage}
+                    className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/80 p-2 text-ink shadow-sm transition hover:bg-white disabled:opacity-0"
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                  </button>
+
+                  <button
+                    onClick={nextImage}
+                    className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/80 p-2 text-ink shadow-sm transition hover:bg-white disabled:opacity-0"
+                    aria-label="Next image"
+                  >
+                    <ChevronRight className="h-5 w-5" />
+                  </button>
+                </>
+              )}
+
+              <div className="absolute left-4 top-4 z-10">
+                <p className="rounded-full bg-white/90 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-copper-soft backdrop-blur-md">
+                  {product.highlight || 'Atelier Pick'}
+                </p>
               </div>
             </div>
 

@@ -1,6 +1,6 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { Instagram, MessageCircle } from 'lucide-react';
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { PremiumProductModal } from './components/PremiumProductModal';
 import { CraftTimeline } from './components/showroom/CraftTimeline';
 import { FooterShowroom } from './components/showroom/FooterShowroom';
@@ -16,6 +16,7 @@ import {
   brandPromises,
   assuranceNotes,
 } from './data/showroomData';
+import { destroyLenis, getLenis, initLenis, scrollToTarget } from './lib/scrollEngine';
 import { menuData } from './data/menuData';
 
 const navLinks = [
@@ -29,6 +30,8 @@ const navLinks = [
 export default function App() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [activeCategory, setActiveCategory] = useState('all');
+  const [headerOffset, setHeaderOffset] = useState(88);
+  const headerRef = useRef(null);
   const lastTriggerRef = useRef(null);
   const reducedMotion = useReducedMotion();
 
@@ -45,10 +48,63 @@ export default function App() {
     return (markedProducts.length ? markedProducts : allProducts).slice(0, 3);
   }, [allProducts]);
 
+  useEffect(() => {
+    if (reducedMotion) {
+      destroyLenis();
+      return undefined;
+    }
+
+    initLenis();
+
+    return () => {
+      destroyLenis();
+    };
+  }, [reducedMotion]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined;
+    const headerNode = headerRef.current;
+    if (!headerNode) return undefined;
+
+    const syncHeaderOffset = () => {
+      const nextOffset = Math.max(Math.ceil(headerNode.getBoundingClientRect().height + 8), 72);
+      setHeaderOffset(nextOffset);
+      document.documentElement.style.setProperty('--header-offset', `${nextOffset}px`);
+    };
+
+    syncHeaderOffset();
+
+    const observer = new ResizeObserver(syncHeaderOffset);
+    observer.observe(headerNode);
+    window.addEventListener('resize', syncHeaderOffset);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', syncHeaderOffset);
+      document.documentElement.style.removeProperty('--header-offset');
+    };
+  }, []);
+
+  useEffect(() => {
+    const lenis = getLenis();
+    if (!lenis) return;
+
+    if (selectedProduct) {
+      lenis.stop();
+      return;
+    }
+
+    lenis.start();
+  }, [selectedProduct]);
+
   const handlePrimaryCta = (targetId) => {
     const target = document.getElementById(targetId);
     if (!target) return;
-    target.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+    if (reducedMotion) {
+      target.scrollIntoView({ behavior: 'auto', block: 'start' });
+      return;
+    }
+    scrollToTarget(target, -(headerOffset + 12));
   };
 
   const handleSelectProduct = (product, triggerElement) => {
@@ -73,6 +129,7 @@ export default function App() {
       />
 
       <motion.header
+        ref={headerRef}
         style={{ opacity: headerOpacity }}
         className="fixed left-0 right-0 top-1 z-40 mx-auto w-[min(1120px,calc(100%-1.25rem))] rounded-2xl border border-copper-soft/20 bg-cream-ice/85 px-4 py-3 shadow-premium-sm backdrop-blur-xl"
       >
@@ -83,7 +140,7 @@ export default function App() {
             className="rounded-xl px-2 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-soft"
             aria-label="Go to top"
           >
-            <BrandLogo className="h-10 sm:h-11" />
+            <BrandLogo className="h-6 sm:h-10" />
           </button>
 
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
@@ -123,7 +180,12 @@ export default function App() {
       </motion.header>
 
       <main>
-        <HeroShowroom section={showroomSections[0]} onPrimaryCta={handlePrimaryCta} totalProducts={allProducts.length} />
+        <HeroShowroom
+          section={showroomSections[0]}
+          onPrimaryCta={handlePrimaryCta}
+          totalProducts={allProducts.length}
+          headerOffset={headerOffset}
+        />
         <IngredientStrip promises={brandPromises} narrative={ingredientNarrative} />
         <CraftTimeline section={showroomSections[1]} timeline={craftsmanshipTimeline} onPrimaryCta={handlePrimaryCta} />
         <SignatureReveal

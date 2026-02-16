@@ -7,6 +7,7 @@ export const showroomSections = [
     ctaLabel: 'Enter Collection',
     ctaTarget: 'shop',
     motionPreset: 'hero',
+    heroImage: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=2400&auto=format&fit=crop',
   },
   {
     id: 'craft',
@@ -91,3 +92,21 @@ export const assuranceNotes = [
   'Exact same premium bag and box packaging with every order.',
   'Ragi + jaggery brownie option available on request at no extra cost.',
 ];
+
+export const heroMotionSpec = {
+  breakpoint: 1024,
+  pinDistanceVh: 140,
+  beats: {
+    reveal: { start: 0, end: 0.28 },
+    cinematic: { start: 0.28, end: 0.72 },
+    settle: { start: 0.72, end: 1 },
+  },
+  tilt: {
+    peakX: 4.2,
+    peakZ: 0.8,
+  },
+  spotlightTravel: 58,
+  ribbon: {
+    travelYPercent: 8,
+  },
+};

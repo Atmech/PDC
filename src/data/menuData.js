@@ -15,7 +15,13 @@ export const menuData = {
       highlight: 'House Signature',
       storyNote: 'Fudgy cocoa center with roasted walnut crunch in every slice.',
       specialNote: 'Available with ragi and jaggery at no extra cost.',
+      specialNote: 'Available with ragi and jaggery at no extra cost.',
       accentTone: 'chocolate',
+      images: [
+        '/brownies/choco_walnut_brownie/choco-walnut-1.jpg',
+        '/brownies/choco_walnut_brownie/choco-walnut-2.jpg',
+        '/brownies/choco_walnut_brownie/choco-walnut-3.jpg',
+      ],
     },
     {
       id: 2,
@@ -32,6 +38,7 @@ export const menuData = {
       highlight: 'Three Chocolate Chunk Blend',
       storyNote: 'Layered chocolate intensity that opens deep and finishes creamy.',
       accentTone: 'copper',
+      images: ['https://images.unsplash.com/photo-1589119908995-c6837fa14848?q=80&w=1000&auto=format&fit=crop'],
     },
     {
       id: 3,
@@ -48,6 +55,7 @@ export const menuData = {
       highlight: 'Customizable',
       storyNote: 'Pick your preferred two-chocolate pairing for a tailored bite.',
       accentTone: 'copper',
+      images: ['https://images.unsplash.com/photo-1624353365286-3f8d62daad51?q=80&w=1000&auto=format&fit=crop'],
     },
     {
       id: 4,
@@ -64,6 +72,7 @@ export const menuData = {
       highlight: 'Velvet Series',
       storyNote: 'Soft velvet crumb balanced by gentle white chocolate sweetness.',
       accentTone: 'cream',
+      images: ['https://images.unsplash.com/photo-1616031037011-087000171abe?q=80&w=1000&auto=format&fit=crop'],
     },
     {
       id: 5,
@@ -78,8 +87,13 @@ export const menuData = {
       ingredients: ['Biscoff', 'Lotus Crumbs', 'Pure Butter'],
       icons: ['🍪', '✨', '💛'],
       highlight: 'Imported Biscoff Finish',
-      storyNote: 'Caramelized biscuit character with a buttery cocoa base.',
+      storyNote: 'Caramelized biscuit richness with a buttery cocoa base.',
       accentTone: 'copper',
+      images: [
+        '/brownies/biscoff_brownie/biscoff-brownie-1.jpg',
+        '/brownies/biscoff_brownie/biscoff-brownie-2.jpg',
+        '/brownies/biscoff_brownie/biscoff-brownie-3.jpg',
+      ],
     },
     {
       id: 6,
@@ -96,6 +110,7 @@ export const menuData = {
       highlight: 'Classic Core Menu',
       storyNote: 'Balanced sweetness and roasted walnut texture in a fudgy base.',
       accentTone: 'chocolate',
+      images: ['https://images.unsplash.com/photo-1596766023275-842245f7ab3e?q=80&w=1000&auto=format&fit=crop'],
     },
     {
       id: 7,
@@ -112,6 +127,7 @@ export const menuData = {
       highlight: 'Nutella Favorite',
       storyNote: 'Creamy hazelnut spread over warm brownie richness.',
       accentTone: 'chocolate',
+      images: ['https://images.unsplash.com/photo-1610459709971-55079a4087e5?q=80&w=1000&auto=format&fit=crop'],
     },
   ],
   whiteBrownies: [
@@ -130,6 +146,7 @@ export const menuData = {
       highlight: 'Biscoff White Edition',
       storyNote: 'Creamy white brownie body with caramelized biscuit top notes.',
       accentTone: 'cream',
+      images: ['https://images.unsplash.com/photo-1594833246835-cdb0e5178657?q=80&w=1000&auto=format&fit=crop'],
     },
     {
       id: 9,
@@ -146,6 +163,7 @@ export const menuData = {
       highlight: 'Triple White Series',
       storyNote: 'A white-brownie canvas with deep-to-creamy chocolate layering.',
       accentTone: 'cream',
+      images: ['https://images.unsplash.com/photo-1596766023275-842245f7ab3e?q=80&w=1000&auto=format&fit=crop'],
     },
     {
       id: 10,
@@ -162,6 +180,7 @@ export const menuData = {
       highlight: 'Custom White Variant',
       storyNote: 'Personalized two-chocolate mix in a buttery white brownie base.',
       accentTone: 'cream',
+      images: ['https://images.unsplash.com/photo-1624353365286-3f8d62daad51?q=80&w=1000&auto=format&fit=crop'],
     },
     {
       id: 11,
@@ -178,6 +197,7 @@ export const menuData = {
       highlight: 'Nutella White Favorite',
       storyNote: 'Nutty cocoa center wrapped in soft white chocolate sweetness.',
       accentTone: 'cream',
+      images: ['https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=1000&auto=format&fit=crop'],
     },
     {
       id: 12,
@@ -194,6 +214,7 @@ export const menuData = {
       highlight: 'Classic White',
       storyNote: 'Clean, buttery crumb with generous white-chocolate pockets.',
       accentTone: 'cream',
+      images: ['https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?q=80&w=1000&auto=format&fit=crop'],
     },
   ],
   cakes: [
@@ -213,6 +234,7 @@ export const menuData = {
       highlight: 'Heritage Bestseller',
       storyNote: 'A timeless Parsi-style tea cake with rich mawa depth.',
       accentTone: 'copper',
+      images: ['https://images.unsplash.com/photo-1626803775151-61d756612f97?q=80&w=1000&auto=format&fit=crop'],
     },
     {
       id: 14,
@@ -229,6 +251,7 @@ export const menuData = {
       highlight: 'Nut-Loaded Cake',
       storyNote: 'Dense cocoa body with abundant walnut texture and crunch.',
       accentTone: 'copper',
+      images: ['https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000&auto=format&fit=crop'],
     },
     {
       id: 15,
@@ -246,6 +269,7 @@ export const menuData = {
       highlight: 'New Rusk Drop',
       storyNote: 'Classic mawa flavor in a crisp-yet-soft tea-time toast.',
       accentTone: 'copper',
+      images: ['https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=1000&auto=format&fit=crop'],
     },
   ],
   tubs: [
@@ -264,6 +288,7 @@ export const menuData = {
       highlight: 'Spoon Dessert',
       storyNote: 'Silky milk chocolate and crunchy toppings in every spoonful.',
       accentTone: 'chocolate',
+      images: ['/brownie_tubs/milk-chocolate-tub.jpg'],
     },
     {
       id: 17,
@@ -280,6 +305,7 @@ export const menuData = {
       highlight: 'Top Seller Tub',
       storyNote: 'Caramelized biscuit richness with white-chocolate accents.',
       accentTone: 'copper',
+      images: ['/brownie_tubs/biscoff-tub.jpg'],
     },
     {
       id: 18,
@@ -296,6 +322,7 @@ export const menuData = {
       highlight: 'Hazelnut Luxe',
       storyNote: 'Nutella-forward creaminess finished with roasted hazelnut bite.',
       accentTone: 'chocolate',
+      images: ['/brownie_tubs/nutella-tub.jpg'],
     },
   ],
 };
