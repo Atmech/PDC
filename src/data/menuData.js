@@ -38,7 +38,11 @@ export const menuData = {
       highlight: 'Three Chocolate Chunk Blend',
       storyNote: 'Layered chocolate intensity that opens deep and finishes creamy.',
       accentTone: 'copper',
-      images: ['https://images.unsplash.com/photo-1589119908995-c6837fa14848?q=80&w=1000&auto=format&fit=crop'],
+      images: [
+        '/brownies/triple_chocolate_brownie/triple-chocolate-1.jpg',
+        '/brownies/triple_chocolate_brownie/triple-chocolate-2.jpg',
+        '/brownies/triple_chocolate_brownie/triple-chocolate-3.jpg',
+      ],
     },
     {
       id: 3,
@@ -127,7 +131,11 @@ export const menuData = {
       highlight: 'Nutella Favorite',
       storyNote: 'Creamy hazelnut spread over warm brownie richness.',
       accentTone: 'chocolate',
-      images: ['https://images.unsplash.com/photo-1610459709971-55079a4087e5?q=80&w=1000&auto=format&fit=crop'],
+      images: [
+        '/brownies/nutella_brownie/nutella-brownie-1.jpg',
+        '/brownies/nutella_brownie/nutella-brownie-2.jpg',
+        '/brownies/nutella_brownie/nutella-brownie-3.jpg',
+      ],
     },
   ],
   whiteBrownies: [
