@@ -101,133 +101,137 @@ export const PremiumProductModal = ({ product, onClose }) => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 36, scale: 0.99 }}
           transition={{ duration: reducedMotion ? 0 : 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="showroom-panel relative z-10 w-full max-w-2xl overflow-hidden rounded-t-[2rem] border border-copper-soft/30 bg-brand-cream p-6 shadow-premium-xl sm:rounded-[2rem] sm:p-8"
+          className="showroom-panel relative z-10 flex w-full max-w-2xl flex-col overflow-hidden rounded-t-[2rem] border border-copper-soft/30 bg-brand-cream shadow-premium-xl sm:rounded-[2rem] max-h-[90dvh]"
         >
-          <button
-            ref={closeButtonRef}
-            type="button"
-            onClick={onClose}
-            className="absolute right-4 top-4 z-20 inline-flex h-10 w-10 items-center justify-center rounded-full border border-copper-soft/25 bg-white/80 text-ink transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-soft"
-          >
-            <X className="h-4 w-4" />
-          </button>
+          <div className="absolute right-0 top-0 z-30 p-4 bg-gradient-to-b from-brand-cream via-brand-cream/80 to-transparent w-full flex justify-end pointer-events-none">
+            <button
+              ref={closeButtonRef}
+              type="button"
+              onClick={onClose}
+              className="pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full border border-copper-soft/25 bg-white/80 text-ink transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-soft"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
 
-          <div className="grid gap-6 sm:grid-cols-[0.8fr_1.2fr]">
-            <div className="group relative aspect-square overflow-hidden rounded-3xl border border-copper-soft/25 bg-white sm:aspect-[0.9/1]">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={product.images[currentImageIndex]}
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="absolute inset-0"
+          <div className="overflow-y-auto p-6 sm:p-8 pt-16 sm:pt-8 custom-scrollbar">
+            <div className="grid gap-6 sm:grid-cols-[0.8fr_1.2fr]">
+              <div className="group relative aspect-video w-full overflow-hidden rounded-3xl border border-copper-soft/25 bg-white sm:aspect-[0.9/1]">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={product.images[currentImageIndex]}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="absolute inset-0"
+                  >
+                    <img
+                      src={product.images[currentImageIndex]}
+                      alt={product.name}
+                      className="h-full w-full object-cover opacity-90 cursor-zoom-in"
+                      onClick={() => setIsLightboxOpen(true)}
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-br ${toneClasses[product.accentTone] || toneClasses.copper} mix-blend-multiply opacity-60`} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-cream-ice/95 via-cream-ice/20 to-transparent opacity-60" />
+                  </motion.div>
+                </AnimatePresence>
+
+                {product.images.length > 1 && (
+                  <>
+                    <div className="absolute inset-x-0 bottom-4 z-20 flex justify-center gap-2">
+                      {product.images.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setCurrentImageIndex(index)}
+                          className={`h-2 w-2 rounded-full transition-all ${index === currentImageIndex ? 'bg-copper-soft w-4' : 'bg-copper-soft/40 hover:bg-copper-soft/60'
+                            }`}
+                          aria-label={`Go to image ${index + 1}`}
+                        />
+                      ))}
+                    </div>
+
+                    <button
+                      onClick={prevImage}
+                      className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/80 p-2 text-ink shadow-sm transition hover:bg-white disabled:opacity-0"
+                      aria-label="Previous image"
+                    >
+                      <ChevronLeft className="h-5 w-5" />
+                    </button>
+
+                    <button
+                      onClick={nextImage}
+                      className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/80 p-2 text-ink shadow-sm transition hover:bg-white disabled:opacity-0"
+                      aria-label="Next image"
+                    >
+                      <ChevronRight className="h-5 w-5" />
+                    </button>
+                  </>
+                )}
+
+                <div className="absolute left-4 top-4 z-10">
+                  <p className="rounded-full bg-white/90 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-copper-soft backdrop-blur-md">
+                    {product.highlight || 'Atelier Pick'}
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setIsLightboxOpen(true)}
+                  className="absolute right-4 bottom-4 z-30 rounded-full bg-white/20 p-2 text-white backdrop-blur-md transition hover:bg-white/40 opacity-0 group-hover:opacity-100"
+                  aria-label="View full screen"
                 >
-                  <img
-                    src={product.images[currentImageIndex]}
-                    alt={product.name}
-                    className="h-full w-full object-cover opacity-90 cursor-zoom-in"
-                    onClick={() => setIsLightboxOpen(true)}
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-br ${toneClasses[product.accentTone] || toneClasses.copper} mix-blend-multiply opacity-60`} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-cream-ice/95 via-cream-ice/20 to-transparent opacity-60" />
-                </motion.div>
-              </AnimatePresence>
+                  <Maximize2 className="h-4 w-4" />
+                </button>
+              </div>
 
-              {product.images.length > 1 && (
-                <>
-                  <div className="absolute inset-x-0 bottom-4 z-20 flex justify-center gap-2">
-                    {product.images.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setCurrentImageIndex(index)}
-                        className={`h-2 w-2 rounded-full transition-all ${index === currentImageIndex ? 'bg-copper-soft w-4' : 'bg-copper-soft/40 hover:bg-copper-soft/60'
-                          }`}
-                        aria-label={`Go to image ${index + 1}`}
-                      />
-                    ))}
+              <div>
+                <h3 className="pr-10 font-display text-4xl leading-tight text-ink">{product.name}</h3>
+                {product.subtitle ? <p className="mt-2 text-xs uppercase tracking-[0.2em] text-copper-soft">{product.subtitle}</p> : null}
+
+                <div className="mt-6 rounded-2xl border border-copper-soft/20 bg-white/70 p-4">
+                  <div className="flex items-center justify-between text-sm text-ink-muted">
+                    <span>Original</span>
+                    <span className="line-through">₹{product.price}</span>
                   </div>
-
-                  <button
-                    onClick={prevImage}
-                    className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/80 p-2 text-ink shadow-sm transition hover:bg-white disabled:opacity-0"
-                    aria-label="Previous image"
-                  >
-                    <ChevronLeft className="h-5 w-5" />
-                  </button>
-
-                  <button
-                    onClick={nextImage}
-                    className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/80 p-2 text-ink shadow-sm transition hover:bg-white disabled:opacity-0"
-                    aria-label="Next image"
-                  >
-                    <ChevronRight className="h-5 w-5" />
-                  </button>
-                </>
-              )}
-
-              <div className="absolute left-4 top-4 z-10">
-                <p className="rounded-full bg-white/90 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-copper-soft backdrop-blur-md">
-                  {product.highlight || 'Atelier Pick'}
-                </p>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => setIsLightboxOpen(true)}
-                className="absolute right-4 bottom-4 z-30 rounded-full bg-white/20 p-2 text-white backdrop-blur-md transition hover:bg-white/40 opacity-0 group-hover:opacity-100"
-                aria-label="View full screen"
-              >
-                <Maximize2 className="h-4 w-4" />
-              </button>
-            </div>
-
-            <div>
-              <h3 className="pr-10 font-display text-4xl leading-tight text-ink">{product.name}</h3>
-              {product.subtitle ? <p className="mt-2 text-xs uppercase tracking-[0.2em] text-copper-soft">{product.subtitle}</p> : null}
-
-              <div className="mt-6 rounded-2xl border border-copper-soft/20 bg-white/70 p-4">
-                <div className="flex items-center justify-between text-sm text-ink-muted">
-                  <span>Original</span>
-                  <span className="line-through">₹{product.price}</span>
+                  <div className="mt-2 flex items-center justify-between text-sm text-emerald-700">
+                    <span>Showroom Discount ({discount}%)</span>
+                    <span>-₹{product.price - product.salePrice}</span>
+                  </div>
+                  <div className="mt-3 border-t border-copper-soft/20 pt-3">
+                    <p className="text-xs uppercase tracking-[0.18em] text-ink-muted">Final Price</p>
+                    <p className="font-accent text-4xl text-copper-soft">₹{product.salePrice}</p>
+                  </div>
                 </div>
-                <div className="mt-2 flex items-center justify-between text-sm text-emerald-700">
-                  <span>Showroom Discount ({discount}%)</span>
-                  <span>-₹{product.price - product.salePrice}</span>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {product.ingredients.map((ingredient, index) => (
+                    <span
+                      key={`${product.id}-${ingredient}`}
+                      className="inline-flex items-center gap-2 rounded-full border border-copper-soft/20 bg-white/75 px-3 py-1 text-xs font-semibold text-ink-muted"
+                    >
+                      {product.icons[index]}
+                      {ingredient}
+                    </span>
+                  ))}
                 </div>
-                <div className="mt-3 border-t border-copper-soft/20 pt-3">
-                  <p className="text-xs uppercase tracking-[0.18em] text-ink-muted">Final Price</p>
-                  <p className="font-accent text-4xl text-copper-soft">₹{product.salePrice}</p>
-                </div>
+
+                {product.specialNote ? (
+                  <p className="mt-4 rounded-2xl border border-copper-soft/20 bg-white/65 px-4 py-3 text-xs leading-relaxed text-ink-muted">
+                    {product.specialNote}
+                  </p>
+                ) : null}
+
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="premium-pill mt-8 inline-flex w-full items-center justify-center gap-3"
+                >
+                  <MessageCircle className="h-5 w-5" />
+                  Order on WhatsApp
+                </a>
               </div>
-
-              <div className="mt-5 flex flex-wrap gap-2">
-                {product.ingredients.map((ingredient, index) => (
-                  <span
-                    key={`${product.id}-${ingredient}`}
-                    className="inline-flex items-center gap-2 rounded-full border border-copper-soft/20 bg-white/75 px-3 py-1 text-xs font-semibold text-ink-muted"
-                  >
-                    {product.icons[index]}
-                    {ingredient}
-                  </span>
-                ))}
-              </div>
-
-              {product.specialNote ? (
-                <p className="mt-4 rounded-2xl border border-copper-soft/20 bg-white/65 px-4 py-3 text-xs leading-relaxed text-ink-muted">
-                  {product.specialNote}
-                </p>
-              ) : null}
-
-              <a
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="premium-pill mt-8 inline-flex w-full items-center justify-center gap-3"
-              >
-                <MessageCircle className="h-5 w-5" />
-                Order on WhatsApp
-              </a>
             </div>
           </div>
         </motion.section>
