@@ -44,23 +44,7 @@ export const menuData = {
         '/brownies/triple_chocolate_brownie/triple-chocolate-3.jpg',
       ],
     },
-    {
-      id: 3,
-      name: 'Double Chocolate Brownie',
-      description:
-        'The same rich brownie base with your choice of any two chocolate chunk variants for a custom double-chocolate profile.',
-      price: 780,
-      salePrice: 585,
-      weight: '1/2 Kg (6 pcs)',
-      isNew: true,
-      isBestseller: false,
-      ingredients: ['Choose Any 2', 'Milk/Dark/White', 'Pure Butter'],
-      icons: ['✨', '🍫', '💛'],
-      highlight: 'Customizable',
-      storyNote: 'Pick your preferred two-chocolate pairing for a tailored bite.',
-      accentTone: 'copper',
-      images: ['https://images.unsplash.com/photo-1624353365286-3f8d62daad51?q=80&w=1000&auto=format&fit=crop'],
-    },
+
     {
       id: 4,
       name: 'Red Velvet Brownie',
@@ -76,7 +60,11 @@ export const menuData = {
       highlight: 'Velvet Series',
       storyNote: 'Soft velvet crumb balanced by gentle white chocolate sweetness.',
       accentTone: 'cream',
-      images: ['https://images.unsplash.com/photo-1616031037011-087000171abe?q=80&w=1000&auto=format&fit=crop'],
+      images: [
+        '/brownies/red_velvet_brownie/red-velvet-1.jpg',
+        '/brownies/red_velvet_brownie/red-velvet-2.jpg',
+        '/brownies/red_velvet_brownie/red-velvet-3.jpg',
+      ],
     },
     {
       id: 5,
@@ -114,7 +102,11 @@ export const menuData = {
       highlight: 'Classic Core Menu',
       storyNote: 'Balanced sweetness and roasted walnut texture in a fudgy base.',
       accentTone: 'chocolate',
-      images: ['https://images.unsplash.com/photo-1596766023275-842245f7ab3e?q=80&w=1000&auto=format&fit=crop'],
+      images: [
+        '/brownies/walnut_brownie/walnut-brownie-1.jpg',
+        '/brownies/walnut_brownie/walnut-brownie-2.jpg',
+        '/brownies/walnut_brownie/walnut-brownie-3.jpg',
+      ],
     },
     {
       id: 7,
