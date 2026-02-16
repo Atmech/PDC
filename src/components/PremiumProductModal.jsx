@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, MessageCircle, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Maximize2, MessageCircle, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 const focusableSelector =
@@ -16,6 +16,7 @@ export const PremiumProductModal = ({ product, onClose }) => {
   const dialogRef = useRef(null);
   const closeButtonRef = useRef(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   useEffect(() => {
     setCurrentImageIndex(0);
@@ -125,7 +126,8 @@ export const PremiumProductModal = ({ product, onClose }) => {
                   <img
                     src={product.images[currentImageIndex]}
                     alt={product.name}
-                    className="h-full w-full object-cover opacity-90"
+                    className="h-full w-full object-cover opacity-90 cursor-zoom-in"
+                    onClick={() => setIsLightboxOpen(true)}
                   />
                   <div className={`absolute inset-0 bg-gradient-to-br ${toneClasses[product.accentTone] || toneClasses.copper} mix-blend-multiply opacity-60`} />
                   <div className="absolute inset-0 bg-gradient-to-t from-cream-ice/95 via-cream-ice/20 to-transparent opacity-60" />
@@ -169,6 +171,15 @@ export const PremiumProductModal = ({ product, onClose }) => {
                   {product.highlight || 'Atelier Pick'}
                 </p>
               </div>
+
+              <button
+                type="button"
+                onClick={() => setIsLightboxOpen(true)}
+                className="absolute right-4 bottom-4 z-30 rounded-full bg-white/20 p-2 text-white backdrop-blur-md transition hover:bg-white/40 opacity-0 group-hover:opacity-100"
+                aria-label="View full screen"
+              >
+                <Maximize2 className="h-4 w-4" />
+              </button>
             </div>
 
             <div>
@@ -220,6 +231,79 @@ export const PremiumProductModal = ({ product, onClose }) => {
             </div>
           </div>
         </motion.section>
+
+        {/* Lightbox Overlay */}
+        <AnimatePresence>
+          {isLightboxOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl"
+              onClick={() => setIsLightboxOpen(false)}
+            >
+              <button
+                onClick={() => setIsLightboxOpen(false)}
+                className="absolute right-6 top-6 z-50 rounded-full bg-white/10 p-2 text-white/70 transition hover:bg-white/20 hover:text-white"
+              >
+                <X className="h-6 w-6" />
+              </button>
+
+              <div
+                className="relative h-full w-full max-w-5xl p-6 flex items-center justify-center"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <motion.img
+                  key={`lightbox-${currentImageIndex}`}
+                  src={product.images[currentImageIndex]}
+                  alt={product.name}
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.9, opacity: 0 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  className="max-h-[85vh] max-w-full rounded-lg object-contain shadow-2xl"
+                />
+
+                {product.images.length > 1 && (
+                  <>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        prevImage();
+                      }}
+                      className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white transition hover:bg-white/20"
+                    >
+                      <ChevronLeft className="h-8 w-8" />
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        nextImage();
+                      }}
+                      className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white transition hover:bg-white/20"
+                    >
+                      <ChevronRight className="h-8 w-8" />
+                    </button>
+
+                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+                      {product.images.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setCurrentImageIndex(index);
+                          }}
+                          className={`h-2 rounded-full transition-all ${index === currentImageIndex ? 'bg-white w-6' : 'bg-white/30 w-2 hover:bg-white/50'}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </AnimatePresence>
   );

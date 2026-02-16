@@ -5,7 +5,7 @@ const categoryMeta = [
   { id: 'all', label: 'All Atelier Picks' },
   { id: 'brownies', label: 'Brownies' },
   { id: 'whiteBrownies', label: 'White Brownies' },
-  { id: 'cakes', label: 'Cakes & Rusks' },
+  { id: 'cakes', label: 'Cakes' },
   { id: 'tubs', label: 'Brownie Tubs' },
 ];
 
@@ -19,7 +19,7 @@ export const ProductRail = ({ products, activeCategory, onCategoryChange, onProd
 
   return (
     <section id="shop" className="relative py-24">
-      <div className="mx-auto w-full max-w-6xl px-5">
+      <div className="mx-auto w-full max-w-screen-2xl px-8 md:px-24">
         <div className="mb-8">
           <p className="font-sans text-xs uppercase tracking-[0.24em] text-copper-soft/80">Order Collection</p>
           <h2 className="mt-4 font-display text-4xl leading-tight text-ink md:text-6xl">Choose Your Atelier Box</h2>
@@ -39,11 +39,10 @@ export const ProductRail = ({ products, activeCategory, onCategoryChange, onProd
                   key={category.id}
                   type="button"
                   onClick={() => onCategoryChange(category.id)}
-                  className={`rounded-full px-4 py-2 text-sm font-semibold whitespace-nowrap transition ${
-                    isActive
-                      ? 'bg-copper-soft text-white shadow-premium-sm'
-                      : 'bg-white/70 text-ink-muted hover:bg-white hover:text-ink'
-                  }`}
+                  className={`rounded-full px-4 py-2 text-sm font-semibold whitespace-nowrap transition ${isActive
+                    ? 'bg-copper-soft text-white shadow-premium-sm'
+                    : 'bg-white/70 text-ink-muted hover:bg-white hover:text-ink'
+                    }`}
                 >
                   {category.label}
                 </button>
@@ -59,7 +58,7 @@ export const ProductRail = ({ products, activeCategory, onCategoryChange, onProd
             animate={{ opacity: 1, y: 0 }}
             exit={reducedMotion ? { opacity: 1 } : { opacity: 0, y: -16 }}
             transition={{ duration: reducedMotion ? 0 : 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+            className="grid grid-cols-1 gap-y-16 gap-x-12 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-20"
           >
             {visibleProducts.map((product, index) => (
               <ProductCard

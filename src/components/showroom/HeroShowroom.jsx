@@ -39,7 +39,7 @@ export const HeroShowroom = ({ section, onPrimaryCta, totalProducts, headerOffse
       ref={heroRef}
       id={section.id}
       className="hero-stage relative isolate overflow-hidden"
-      style={{ paddingTop: `calc(var(--header-offset, ${Math.max(headerOffset ?? 88, 88)}px) + 2.5rem)` }}
+      style={{ paddingTop: `calc(var(--header-offset, ${Math.max(headerOffset ?? 88, 88)}px) + 5rem)` }}
       aria-label="Brand introduction"
     >
       <div className="pointer-events-none absolute inset-0 -z-20" aria-hidden>
@@ -48,17 +48,15 @@ export const HeroShowroom = ({ section, onPrimaryCta, totalProducts, headerOffse
         <div className="hero-stage-glow hero-stage-glow-bottom" />
       </div>
 
-      <div className="mx-auto grid w-full max-w-6xl gap-12 px-5 pb-24 md:grid-cols-[1.02fr_0.98fr] md:items-end md:gap-14 md:pb-28">
+      <div className="mx-auto grid w-full max-w-screen-2xl gap-16 px-8 pb-32 md:grid-cols-[1.1fr_0.9fr] md:items-end md:gap-24 md:px-24 md:pb-40">
         <motion.div data-hero-copy className="relative z-10" {...reducedRevealProps}>
-          <div data-hero-logo className="origin-left">
-            <BrandLogo className="h-9 sm:h-14" />
-          </div>
 
-          <h1 data-hero-heading className="mt-4 max-w-4xl font-display text-5xl font-semibold leading-[0.95] text-ink sm:text-6xl md:text-7xl">
+
+          <h1 data-hero-heading className="mt-8 max-w-3xl font-display text-4xl font-semibold leading-[0.9] text-ink sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
             {section.headline}
           </h1>
 
-          <p data-hero-body className="mt-8 max-w-xl text-base leading-relaxed text-ink-muted sm:text-lg">
+          <p data-hero-body className="mt-10 max-w-lg text-base leading-loose text-ink-muted sm:text-lg md:text-xl">
             {section.body}
           </p>
 
@@ -66,16 +64,6 @@ export const HeroShowroom = ({ section, onPrimaryCta, totalProducts, headerOffse
             <button type="button" onClick={() => onPrimaryCta('shop')} className="premium-pill inline-flex items-center gap-2">
               Explore Collection <ArrowRight className="h-4 w-4" />
             </button>
-
-            <a
-              href="https://wa.me/919354101493"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 text-sm font-semibold text-ink transition hover:border-copper-soft hover:text-copper-soft"
-            >
-              <MessageCircle className="h-4 w-4" />
-              Direct WhatsApp Concierge
-            </a>
           </div>
         </motion.div>
 
@@ -96,19 +84,18 @@ export const HeroShowroom = ({ section, onPrimaryCta, totalProducts, headerOffse
 
           <motion.article
             data-hero-panel
-            className="showroom-panel hero-offer-panel relative overflow-hidden rounded-[2rem] border border-copper-soft/20 p-6 sm:p-8"
+            className="showroom-panel hero-offer-panel relative flex flex-col overflow-hidden rounded-[2rem] border border-copper-soft/20 bg-brand-cream/40"
             {...reducedPanelRevealProps}
           >
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-48 overflow-hidden" aria-hidden>
+            <div className="relative h-64 w-full shrink-0 overflow-hidden" aria-hidden>
               <img
                 src={section.heroImage}
                 alt="Premium Dessert Showroom"
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-cream/90" />
             </div>
 
-            <div className="relative z-10 pt-14">
+            <div className="relative flex flex-1 flex-col p-6 sm:p-8">
               <p className="font-sans text-xs uppercase tracking-[0.2em] text-copper-soft/80">Current Offer Window</p>
               <h2 className="mt-4 font-display text-3xl leading-tight text-ink sm:text-4xl">Up to 25% off with free Pune delivery</h2>
 
@@ -136,7 +123,7 @@ export const HeroShowroom = ({ section, onPrimaryCta, totalProducts, headerOffse
             </div>
           </motion.article>
         </div>
-      </div>
-    </section>
+      </div >
+    </section >
   );
 };

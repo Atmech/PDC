@@ -1,4 +1,4 @@
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { motion, useMotionValueEvent, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { Instagram, MessageCircle } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { PremiumProductModal } from './components/PremiumProductModal';
@@ -35,8 +35,20 @@ export default function App() {
   const lastTriggerRef = useRef(null);
   const reducedMotion = useReducedMotion();
 
-  const { scrollYProgress } = useScroll();
+  const { scrollY, scrollYProgress } = useScroll();
   const headerOpacity = useTransform(scrollYProgress, [0, 0.12], [0.8, 1]);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const previous = lastScrollY.current;
+    if (latest > previous && latest > 150) {
+      setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+    lastScrollY.current = latest;
+  });
 
   const allProducts = useMemo(
     () => [...menuData.brownies, ...menuData.whiteBrownies, ...menuData.cakes, ...menuData.tubs],
@@ -67,6 +79,8 @@ export default function App() {
     if (!headerNode) return undefined;
 
     const syncHeaderOffset = () => {
+      // Prevent header shrinkage from affecting layout when scrolled down
+      if (window.scrollY > 50) return;
       const nextOffset = Math.max(Math.ceil(headerNode.getBoundingClientRect().height + 8), 72);
       setHeaderOffset(nextOffset);
       document.documentElement.style.setProperty('--header-offset', `${nextOffset}px`);
@@ -131,9 +145,12 @@ export default function App() {
       <motion.header
         ref={headerRef}
         style={{ opacity: headerOpacity }}
-        className="fixed left-0 right-0 top-1 z-40 mx-auto w-[min(1120px,calc(100%-1.25rem))] rounded-2xl border border-copper-soft/20 bg-cream-ice/85 px-4 py-3 shadow-premium-sm backdrop-blur-xl"
+        initial={{ y: 0 }}
+        animate={{ y: isVisible ? 0 : '-100%' }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        className={`fixed left-0 right-0 top-0 z-40 mx-auto w-full border-b border-copper-soft/10 bg-cream-ice/95 shadow-premium-sm backdrop-blur-xl transition-all md:top-0 md:bg-cream-ice/85 md:backdrop-blur-xl ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
       >
-        <div className="flex items-center justify-between gap-4">
+        <div className="mx-auto flex w-full max-w-screen-2xl items-center justify-between px-6 py-4 md:px-16">
           <button
             type="button"
             onClick={() => handlePrimaryCta('hero')}

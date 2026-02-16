@@ -1,78 +1,64 @@
-import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll } from 'framer-motion';
-import { useMemo, useRef, useState } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 import { ShowroomSection } from './ShowroomSection';
 
 export const CraftTimeline = ({ section, timeline, onPrimaryCta }) => {
+  const containerRef = useRef(null);
   const reducedMotion = useReducedMotion();
-  const desktopTimelineRef = useRef(null);
-  const [activeStep, setActiveStep] = useState(0);
 
-  const { scrollYProgress } = useScroll({
-    target: desktopTimelineRef,
-    offset: ['start start', 'end end'],
-  });
-
-  useMotionValueEvent(scrollYProgress, 'change', (progress) => {
-    if (reducedMotion) return;
-    const currentIndex = Math.min(timeline.length - 1, Math.max(0, Math.floor(progress * timeline.length)));
-    setActiveStep(currentIndex);
-  });
-
-  const timelineHeight = useMemo(() => `${Math.max(timeline.length, 3) * 62}vh`, [timeline.length]);
+  // We can use a simple sticky stack approach where each card acts as a sticky header.
+  // This creates a natural "deck of cards" effect as you scroll down.
 
   return (
-    <ShowroomSection section={section} onPrimaryCta={onPrimaryCta} className="py-24">
-      <div ref={desktopTimelineRef} className="relative mt-12 hidden md:block" style={{ height: timelineHeight }}>
-        <div className="sticky top-24 grid grid-cols-[0.8fr_1.2fr] gap-8">
-          <ol className="space-y-4 pr-3">
-            {timeline.map((item, index) => {
-              const isActive = index === activeStep;
-              return (
-                <li key={item.step} className="relative rounded-2xl border border-copper-soft/20 bg-white/45 p-4">
-                  <p className="text-xs uppercase tracking-[0.25em] text-copper-soft/70">Step {item.step}</p>
-                  <p className={`mt-2 font-display text-2xl transition-colors ${isActive ? 'text-ink' : 'text-ink-muted'}`}>
-                    {item.title}
-                  </p>
-                </li>
-              );
-            })}
-          </ol>
-
-          <div className="showroom-panel relative min-h-[340px] overflow-hidden rounded-[2rem] border border-copper-soft/20 p-8">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={timeline[activeStep].step}
-                initial={reducedMotion ? { opacity: 1 } : { opacity: 0, y: 22 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={reducedMotion ? { opacity: 1 } : { opacity: 0, y: -20 }}
-                transition={{ duration: reducedMotion ? 0 : 0.45, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute inset-0 p-8"
-              >
-                <p className="text-xs uppercase tracking-[0.24em] text-copper-soft/75">{timeline[activeStep].step}</p>
-                <h3 className="mt-4 font-display text-4xl leading-tight text-ink">{timeline[activeStep].title}</h3>
-                <p className="mt-6 max-w-lg text-base leading-relaxed text-ink-muted">{timeline[activeStep].description}</p>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-10 space-y-4 md:hidden">
+    <ShowroomSection section={section} onPrimaryCta={onPrimaryCta} className="py-32 md:py-48">
+      <div ref={containerRef} className="relative mt-24 flex flex-col items-center gap-24 md:gap-32">
         {timeline.map((item, index) => (
-          <motion.article
-            key={item.step}
-            initial={{ opacity: 0, y: reducedMotion ? 0 : 22 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: reducedMotion ? 0 : 0.45, delay: reducedMotion ? 0 : index * 0.08 }}
-            className="showroom-panel relative overflow-hidden rounded-3xl border border-copper-soft/20 p-6"
-          >
-            <p className="text-xs uppercase tracking-[0.24em] text-copper-soft/75">Step {item.step}</p>
-            <h3 className="mt-3 font-display text-3xl text-ink">{item.title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-ink-muted">{item.description}</p>
-          </motion.article>
+          <StickyCard key={item.step} item={item} index={index} total={timeline.length} reducedMotion={reducedMotion} />
         ))}
       </div>
     </ShowroomSection>
+  );
+};
+
+const StickyCard = ({ item, index, total, reducedMotion }) => {
+  // Calculate a staggered top position so they stack nicely with a bit of the previous one visible
+  const topOffset = 140 + index * 10;
+
+  return (
+    <motion.div
+      className="sticky w-full max-w-4xl"
+      style={{
+        top: topOffset,
+        marginBottom: index === total - 1 ? 0 : '20vh' // Spacing to allow scroll time between cards
+      }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-10%" }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <div className="relative overflow-hidden rounded-[2.5rem] border border-copper-soft/20 bg-cream-ice shadow-2xl">
+        {/* Card Shine/Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/80 via-transparent to-copper-soft/5 pointer-events-none" />
+
+        <div className="relative grid gap-8 p-10 md:grid-cols-[0.3fr_1fr] md:p-14 md:gap-16 items-start">
+          <div className="flex flex-col gap-2">
+            <span className="inline-block rounded-full border border-copper-soft/30 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-copper-soft w-fit">
+              Step {item.step}
+            </span>
+            {/* Decorative line */}
+            <div className="h-px w-12 bg-copper-soft/30 mt-4 md:w-full" />
+          </div>
+
+          <div>
+            <h3 className="font-display text-4xl leading-[1.1] text-ink md:text-5xl lg:text-6xl">
+              {item.title}
+            </h3>
+            <p className="mt-6 text-lg leading-relaxed text-ink-muted md:text-xl lg:max-w-xl">
+              {item.description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
 };

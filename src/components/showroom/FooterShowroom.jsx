@@ -5,9 +5,9 @@ export const FooterShowroom = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer id="contact" className="relative overflow-hidden border-t border-copper-soft/25 bg-brand-ink py-16 text-cream-ice">
+    <footer id="contact" className="relative overflow-hidden border-t border-copper-soft/25 bg-brand-ink py-24 text-cream-ice">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_12%,rgba(225,117,68,0.24),transparent_36%),radial-gradient(circle_at_82%_88%,rgba(212,175,55,0.18),transparent_42%)]" />
-      <div className="relative mx-auto w-full max-w-6xl px-5">
+      <div className="relative mx-auto w-full max-w-screen-2xl px-8 md:px-24">
         <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-end">
           <div>
             <BrandLogo variant="light" className="h-14 sm:h-16" />

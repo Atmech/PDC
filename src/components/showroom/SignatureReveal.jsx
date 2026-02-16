@@ -10,7 +10,7 @@ export const SignatureReveal = ({ section, products, onPrimaryCta, onProductSele
 
   return (
     <ShowroomSection section={section} onPrimaryCta={onPrimaryCta} className="py-24">
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-20 grid gap-12 sm:grid-cols-2 lg:grid-cols-3 xl:gap-16">
         {products.map((product, index) => (
           <motion.button
             key={product.id}
@@ -37,7 +37,7 @@ export const SignatureReveal = ({ section, products, onPrimaryCta, onProductSele
               </div>
             </div>
 
-            <div className="flex flex-1 flex-col p-6">
+            <div className="flex flex-1 flex-col p-10 md:p-14">
               <h3 className="font-display text-3xl leading-tight text-ink">{product.name}</h3>
               <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-ink-muted">{product.storyNote || product.description}</p>
 

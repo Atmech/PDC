@@ -167,25 +167,13 @@ export const menuData = {
       highlight: 'Triple White Series',
       storyNote: 'A white-brownie canvas with deep-to-creamy chocolate layering.',
       accentTone: 'cream',
-      images: ['https://images.unsplash.com/photo-1596766023275-842245f7ab3e?q=80&w=1000&auto=format&fit=crop'],
+      images: [
+        '/white_brownies/triple_chocolate_white_brownie/triple-white-1.jpg',
+        '/white_brownies/triple_chocolate_white_brownie/triple-white-2.jpg',
+        '/white_brownies/triple_chocolate_white_brownie/triple-white-3.jpg',
+      ],
     },
-    {
-      id: 10,
-      name: 'Double Chocolate White Brownie',
-      description:
-        'A white chocolate brownie with your choice of any two chocolate chunk variants for a custom double-chocolate white brownie profile.',
-      price: 750,
-      salePrice: 565,
-      weight: '1/2 Kg (6 pcs)',
-      isNew: true,
-      isBestseller: false,
-      ingredients: ['Choose Any 2', 'Milk/Dark/White', 'Pure Butter'],
-      icons: ['✨', '🤍', '💛'],
-      highlight: 'Custom White Variant',
-      storyNote: 'Personalized two-chocolate mix in a buttery white brownie base.',
-      accentTone: 'cream',
-      images: ['https://images.unsplash.com/photo-1624353365286-3f8d62daad51?q=80&w=1000&auto=format&fit=crop'],
-    },
+
     {
       id: 11,
       name: 'Nutella White Chocolate Brownie',
@@ -201,7 +189,11 @@ export const menuData = {
       highlight: 'Nutella White Favorite',
       storyNote: 'Nutty cocoa center wrapped in soft white chocolate sweetness.',
       accentTone: 'cream',
-      images: ['https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=1000&auto=format&fit=crop'],
+      images: [
+        '/white_brownies/nutella_white_brownie/nutella-white-1.jpg',
+        '/white_brownies/nutella_white_brownie/nutella-white-2.jpg',
+        '/white_brownies/nutella_white_brownie/nutella-white-3.jpg',
+      ],
     },
     {
       id: 12,

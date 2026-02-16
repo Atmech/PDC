@@ -11,7 +11,7 @@ export const ShowroomSection = ({ section, onPrimaryCta, className = '', childre
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={getRevealVariants(reducedMotion)}
-        className="mx-auto w-full max-w-6xl px-5"
+        className="mx-auto w-full max-w-screen-2xl px-8 md:px-24"
       >
         <p className="font-sans text-xs uppercase tracking-[0.24em] text-copper-soft/80">{section.eyebrow}</p>
         <h2 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight text-ink md:text-6xl">

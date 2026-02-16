@@ -31,7 +31,7 @@ export const ProductCard = ({ product, onSelect, priority = false }) => {
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col p-6 text-left">
+      <div className="flex flex-1 flex-col p-10 text-left md:p-14">
         <div className="mb-4 flex items-start justify-between gap-3">
           <div>
             {product.highlight ? (

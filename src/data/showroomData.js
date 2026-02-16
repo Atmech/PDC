@@ -7,7 +7,7 @@ export const showroomSections = [
     ctaLabel: 'Enter Collection',
     ctaTarget: 'shop',
     motionPreset: 'hero',
-    heroImage: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=2400&auto=format&fit=crop',
+    heroImage: '/hero-brownie-stack.png',
   },
   {
     id: 'craft',
