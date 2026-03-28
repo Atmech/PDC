@@ -15,7 +15,7 @@ export const IngredientStrip = ({ promises, narrative }) => {
               whileInView="visible"
               viewport={{ once: true, amount: 0.35 }}
               variants={getCardVariants(reducedMotion, index)}
-              className="rounded-full border border-copper-soft/25 bg-cream-ice/80 px-6 py-3 text-xs font-bold uppercase tracking-[0.15em] text-ink-muted shadow-sm backdrop-blur-sm transition hover:border-copper-soft/50 hover:bg-white"
+              className="rounded-full border border-copper-soft/25 bg-cream-ice/80 px-6 py-3 text-xs font-bold uppercase tracking-[0.15em] text-ink-muted shadow-sm backdrop-blur-sm transition hover:border-copper-soft/50 hover:bg-surface"
             >
               {promise}
             </motion.div>
@@ -30,7 +30,7 @@ export const IngredientStrip = ({ promises, narrative }) => {
           {narrative.map((item, index) => (
             <article
               key={`${item.title}-${index}`}
-              className="showroom-panel min-w-[300px] flex-1 max-w-sm rounded-[2rem] border border-copper-soft/20 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+              className="showroom-panel min-w-[300px] flex-1 max-w-sm rounded-[2rem] border border-copper-soft/20 bg-surface p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
             >
               <p className="text-4xl mb-6">{item.icon}</p>
               <h3 className="font-display text-2xl text-ink">{item.title}</h3>

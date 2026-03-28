@@ -1,8 +1,8 @@
 import logoDark from '../../assets/pune-dessert-logo-dark.png';
 import logoCream from '../../assets/pune-dessert-logo-cream.png';
 
-export const BrandLogo = ({ variant = 'dark', className = '', alt = 'Pune Dessert Company logo' }) => {
-  const source = variant === 'light' ? logoCream : logoDark;
+export const BrandLogo = ({ variant = 'light', className = '', alt = 'Pune Dessert Company logo' }) => {
+  const source = variant === 'dark' ? logoDark : logoCream;
 
   return (
     <img

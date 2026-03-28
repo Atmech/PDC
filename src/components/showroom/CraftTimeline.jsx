@@ -11,7 +11,7 @@ export const CraftTimeline = ({ section, timeline, onPrimaryCta }) => {
 
   return (
     <ShowroomSection section={section} onPrimaryCta={onPrimaryCta} className="py-32 md:py-48">
-      <div ref={containerRef} className="relative mt-24 flex flex-col items-center gap-24 md:gap-32">
+      <div ref={containerRef} className="relative mt-24 flex flex-col items-center">
         {timeline.map((item, index) => (
           <StickyCard key={item.step} item={item} index={index} total={timeline.length} reducedMotion={reducedMotion} />
         ))}
@@ -21,24 +21,27 @@ export const CraftTimeline = ({ section, timeline, onPrimaryCta }) => {
 };
 
 const StickyCard = ({ item, index, total, reducedMotion }) => {
-  // Calculate a staggered top position so they stack nicely with a bit of the previous one visible
-  const topOffset = 140 + index * 10;
+  // Calculate a staggered top position so they stack nicely with the previous step pill visible
+  const topOffset = 100 + index * 85;
 
   return (
     <motion.div
       className="sticky w-full max-w-4xl"
       style={{
         top: topOffset,
-        marginBottom: index === total - 1 ? 0 : '20vh' // Spacing to allow scroll time between cards
+        marginBottom: index === total - 1 ? '24vh' : '40vh' // Spacing to allow scroll time between cards, plus a short lock time for the full stack
       }}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10%" }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="relative overflow-hidden rounded-[2.5rem] border border-copper-soft/20 bg-cream-ice shadow-2xl">
+      <div 
+        className="relative overflow-hidden rounded-[2.5rem] border border-copper-soft/20 bg-surface shadow-2xl min-h-[420px] sm:min-h-[350px] md:min-h-[320px]"
+        style={{ paddingBottom: `${(total - 1 - index) * 85}px` }}
+      >
         {/* Card Shine/Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/80 via-transparent to-copper-soft/5 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-copper-soft/10 pointer-events-none" />
 
         <div className="relative grid gap-8 p-10 md:grid-cols-[0.3fr_1fr] md:p-14 md:gap-16 items-start">
           <div className="flex flex-col gap-2">

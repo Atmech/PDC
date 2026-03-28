@@ -5,8 +5,8 @@ export const FooterShowroom = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer id="contact" className="relative overflow-hidden border-t border-copper-soft/25 bg-brand-ink py-24 text-cream-ice">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_12%,rgba(225,117,68,0.24),transparent_36%),radial-gradient(circle_at_82%_88%,rgba(212,175,55,0.18),transparent_42%)]" />
+    <footer id="contact" className="relative overflow-hidden border-t border-copper-soft/25 bg-brand-chocolate py-24 text-ink">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_12%,rgba(225,117,68,0.1),transparent_36%),radial-gradient(circle_at_82%_88%,rgba(212,175,55,0.1),transparent_42%)]" />
       <div className="relative mx-auto w-full max-w-screen-2xl px-8 md:px-24">
         <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-end">
           <div>
@@ -15,7 +15,7 @@ export const FooterShowroom = () => {
             <h2 className="mt-4 max-w-xl font-display text-4xl leading-tight md:text-5xl">
               Premium bakes delivered with atelier-level attention.
             </h2>
-            <p className="mt-5 max-w-xl text-sm leading-relaxed text-brand-mocha md:text-base">
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-ink-muted md:text-base">
               Orders open daily. Reach out on WhatsApp for current drop availability, custom gifting quantities, and
               same-day delivery slots.
             </p>
@@ -35,7 +35,7 @@ export const FooterShowroom = () => {
               href="https://instagram.com/punedessertcompany"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-full items-center justify-center gap-3 rounded-full border border-brand-gold/40 bg-transparent px-6 py-4 text-sm font-semibold text-cream-ice transition hover:border-copper-soft hover:text-copper-glow"
+              className="inline-flex w-full items-center justify-center gap-3 rounded-full border border-brand-gold/40 bg-transparent px-6 py-4 text-sm font-semibold text-ink transition hover:border-copper-soft hover:text-copper-glow"
             >
               <Instagram className="h-5 w-5" />
               Follow on Instagram
@@ -43,7 +43,7 @@ export const FooterShowroom = () => {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-brand-mocha/35 pt-6 text-xs uppercase tracking-[0.18em] text-brand-mocha">
+        <div className="mt-12 border-t border-surface/50 pt-6 text-xs uppercase tracking-[0.18em] text-ink-muted">
           © {year} Pune Dessert Company • Crafted in Pune
         </div>
       </div>

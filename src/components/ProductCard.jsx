@@ -12,7 +12,7 @@ export const ProductCard = ({ product, onSelect, priority = false }) => {
       onClick={(event) => onSelect(product, event.currentTarget)}
       whileHover={reducedMotion ? undefined : { y: -6 }}
       whileTap={reducedMotion ? undefined : { scale: 0.98 }}
-      className="group flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-copper-soft/20 bg-white shadow-premium-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-soft"
+      className="group flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-copper-soft/20 bg-surface shadow-premium-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-soft"
       aria-label={`View details for ${product.name}`}
     >
       <div className="relative h-64 w-full overflow-hidden sm:h-72">
@@ -23,7 +23,7 @@ export const ProductCard = ({ product, onSelect, priority = false }) => {
         />
         <div className="absolute left-4 top-4">
           <span
-            className={`rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] shadow-sm backdrop-blur-md ${priority ? 'bg-copper-soft text-white' : 'bg-white/90 text-ink-muted'
+            className={`rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] shadow-sm backdrop-blur-md ${priority ? 'bg-copper-soft text-white' : 'bg-surface/90 text-ink-muted'
               }`}
           >
             {priority ? 'Signature' : 'Atelier'}

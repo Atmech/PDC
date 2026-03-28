@@ -107,7 +107,7 @@ export const PremiumProductModal = ({ product, onClose }) => {
               ref={closeButtonRef}
               type="button"
               onClick={onClose}
-              className="pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full border border-copper-soft/25 bg-white/80 text-ink transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-soft"
+              className="pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full border border-copper-soft/25 bg-surface/80 text-ink transition hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-soft"
             >
               <X className="h-4 w-4" />
             </button>
@@ -115,7 +115,7 @@ export const PremiumProductModal = ({ product, onClose }) => {
 
           <div className="overflow-y-auto p-6 sm:p-8 pt-16 sm:pt-8 custom-scrollbar">
             <div className="grid gap-6 sm:grid-cols-[0.8fr_1.2fr]">
-              <div className="group relative aspect-video w-full overflow-hidden rounded-3xl border border-copper-soft/25 bg-white sm:aspect-[0.9/1]">
+              <div className="group relative aspect-video w-full overflow-hidden rounded-3xl border border-copper-soft/25 bg-surface sm:aspect-[0.9/1]">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={product.images[currentImageIndex]}
@@ -152,7 +152,7 @@ export const PremiumProductModal = ({ product, onClose }) => {
 
                     <button
                       onClick={prevImage}
-                      className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/80 p-2 text-ink shadow-sm transition hover:bg-white disabled:opacity-0"
+                      className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-surface/80 p-2 text-ink shadow-sm transition hover:bg-surface disabled:opacity-0"
                       aria-label="Previous image"
                     >
                       <ChevronLeft className="h-5 w-5" />
@@ -160,7 +160,7 @@ export const PremiumProductModal = ({ product, onClose }) => {
 
                     <button
                       onClick={nextImage}
-                      className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/80 p-2 text-ink shadow-sm transition hover:bg-white disabled:opacity-0"
+                      className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-surface/80 p-2 text-ink shadow-sm transition hover:bg-surface disabled:opacity-0"
                       aria-label="Next image"
                     >
                       <ChevronRight className="h-5 w-5" />
@@ -169,7 +169,7 @@ export const PremiumProductModal = ({ product, onClose }) => {
                 )}
 
                 <div className="absolute left-4 top-4 z-10">
-                  <p className="rounded-full bg-white/90 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-copper-soft backdrop-blur-md">
+                  <p className="rounded-full bg-surface/90 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-copper-soft backdrop-blur-md">
                     {product.highlight || 'Atelier Pick'}
                   </p>
                 </div>
@@ -177,7 +177,7 @@ export const PremiumProductModal = ({ product, onClose }) => {
                 <button
                   type="button"
                   onClick={() => setIsLightboxOpen(true)}
-                  className="absolute right-4 bottom-4 z-30 rounded-full bg-white/20 p-2 text-white backdrop-blur-md transition hover:bg-white/40 opacity-0 group-hover:opacity-100"
+                  className="absolute right-4 bottom-4 z-30 rounded-full bg-surface/20 p-2 text-white backdrop-blur-md transition hover:bg-surface/40 opacity-0 group-hover:opacity-100"
                   aria-label="View full screen"
                 >
                   <Maximize2 className="h-4 w-4" />
@@ -188,7 +188,7 @@ export const PremiumProductModal = ({ product, onClose }) => {
                 <h3 className="pr-10 font-display text-4xl leading-tight text-ink">{product.name}</h3>
                 {product.subtitle ? <p className="mt-2 text-xs uppercase tracking-[0.2em] text-copper-soft">{product.subtitle}</p> : null}
 
-                <div className="mt-6 rounded-2xl border border-copper-soft/20 bg-white/70 p-4">
+                <div className="mt-6 rounded-2xl border border-copper-soft/20 bg-surface/70 p-4">
                   <div className="flex flex-col">
                     <p className="text-xs uppercase tracking-[0.18em] text-ink-muted">Price</p>
                     <p className="font-accent text-4xl text-copper-soft mt-1">₹{product.price}</p>
@@ -199,7 +199,7 @@ export const PremiumProductModal = ({ product, onClose }) => {
                   {product.ingredients.map((ingredient, index) => (
                     <span
                       key={`${product.id}-${ingredient}`}
-                      className="inline-flex items-center gap-2 rounded-full border border-copper-soft/20 bg-white/75 px-3 py-1 text-xs font-semibold text-ink-muted"
+                      className="inline-flex items-center gap-2 rounded-full border border-copper-soft/20 bg-surface/75 px-3 py-1 text-xs font-semibold text-ink-muted"
                     >
                       {product.icons[index]}
                       {ingredient}
@@ -208,7 +208,7 @@ export const PremiumProductModal = ({ product, onClose }) => {
                 </div>
 
                 {product.specialNote ? (
-                  <p className="mt-4 rounded-2xl border border-copper-soft/20 bg-white/65 px-4 py-3 text-xs leading-relaxed text-ink-muted">
+                  <p className="mt-4 rounded-2xl border border-copper-soft/20 bg-surface/65 px-4 py-3 text-xs leading-relaxed text-ink-muted">
                     {product.specialNote}
                   </p>
                 ) : null}

@@ -21,7 +21,7 @@ export const SignatureReveal = ({ section, products, onPrimaryCta, onProductSele
             viewport={{ once: true, amount: 0.3 }}
             variants={getCardVariants(reducedMotion, index)}
             whileHover={reducedMotion ? undefined : { y: -8 }}
-            className="group flex h-full flex-col overflow-hidden rounded-[1.8rem] border border-copper-soft/20 bg-white shadow-lg text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-soft"
+            className="group flex h-full flex-col overflow-hidden rounded-[1.8rem] border border-copper-soft/20 bg-surface shadow-lg text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copper-soft"
           >
             <div className="relative h-64 w-full overflow-hidden sm:h-72">
               <img
@@ -30,7 +30,7 @@ export const SignatureReveal = ({ section, products, onPrimaryCta, onProductSele
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute left-4 top-4">
-                <p className="inline-flex items-center gap-2 rounded-full border border-copper-soft/25 bg-white/90 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-ink-muted backdrop-blur-md">
+                <p className="inline-flex items-center gap-2 rounded-full border border-copper-soft/25 bg-surface/90 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-ink-muted backdrop-blur-md">
                   <Sparkles className="h-3 w-3" />
                   {product.highlight || 'Signature'}
                 </p>

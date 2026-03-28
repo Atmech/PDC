@@ -166,33 +166,14 @@ export default function App() {
                 key={link.id}
                 type="button"
                 onClick={() => handlePrimaryCta(link.id)}
-                className="rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink-muted transition hover:bg-white hover:text-ink"
+                className="rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink-muted transition hover:bg-surface hover:text-ink"
               >
                 {link.label}
               </button>
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
-            <a
-              href="https://instagram.com/punedessertcompany"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-copper-soft/25 bg-white/80 text-ink transition hover:text-copper-soft"
-              aria-label="Visit Pune Dessert on Instagram"
-            >
-              <Instagram className="h-4 w-4" />
-            </a>
-            <a
-              href="https://wa.me/919354101493"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-copper-soft text-white transition hover:bg-copper-glow"
-              aria-label="Order on WhatsApp"
-            >
-              <MessageCircle className="h-4 w-4" />
-            </a>
-          </div>
+
         </div>
       </motion.header>
 

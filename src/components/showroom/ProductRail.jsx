@@ -41,7 +41,7 @@ export const ProductRail = ({ products, activeCategory, onCategoryChange, onProd
                   onClick={() => onCategoryChange(category.id)}
                   className={`rounded-full px-4 py-2 text-sm font-semibold whitespace-nowrap transition ${isActive
                     ? 'bg-copper-soft text-white shadow-premium-sm'
-                    : 'bg-white/70 text-ink-muted hover:bg-white hover:text-ink'
+                    : 'bg-surface/70 text-ink-muted hover:bg-surface hover:text-ink'
                     }`}
                 >
                   {category.label}
@@ -77,7 +77,7 @@ export const ProductRail = ({ products, activeCategory, onCategoryChange, onProd
             {assurances.map((item) => (
               <p
                 key={item}
-                className="rounded-2xl border border-copper-soft/20 bg-white/65 px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted"
+                className="rounded-2xl border border-copper-soft/20 bg-surface/65 px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted"
               >
                 {item}
               </p>
