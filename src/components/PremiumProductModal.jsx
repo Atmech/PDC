@@ -73,9 +73,8 @@ export const PremiumProductModal = ({ product, onClose }) => {
 
   if (!product) return null;
 
-  const discount = Math.round((1 - product.salePrice / product.price) * 100);
   const whatsappMessage = encodeURIComponent(
-    `Hi! I'd like to order:\n\n🍫 *${product.name}*\n📦 ${product.weight}\n💰 ₹${product.salePrice}\n\nPlease confirm availability!`
+    `Hi! I'd like to order:\n\n🍫 *${product.name}*\n📦 ${product.weight}\n💰 ₹${product.price}\n\nPlease confirm availability!`
   );
   const whatsappLink = `https://wa.me/919354101493?text=${whatsappMessage}`;
 
@@ -190,17 +189,9 @@ export const PremiumProductModal = ({ product, onClose }) => {
                 {product.subtitle ? <p className="mt-2 text-xs uppercase tracking-[0.2em] text-copper-soft">{product.subtitle}</p> : null}
 
                 <div className="mt-6 rounded-2xl border border-copper-soft/20 bg-white/70 p-4">
-                  <div className="flex items-center justify-between text-sm text-ink-muted">
-                    <span>Original</span>
-                    <span className="line-through">₹{product.price}</span>
-                  </div>
-                  <div className="mt-2 flex items-center justify-between text-sm text-emerald-700">
-                    <span>Showroom Discount ({discount}%)</span>
-                    <span>-₹{product.price - product.salePrice}</span>
-                  </div>
-                  <div className="mt-3 border-t border-copper-soft/20 pt-3">
-                    <p className="text-xs uppercase tracking-[0.18em] text-ink-muted">Final Price</p>
-                    <p className="font-accent text-4xl text-copper-soft">₹{product.salePrice}</p>
+                  <div className="flex flex-col">
+                    <p className="text-xs uppercase tracking-[0.18em] text-ink-muted">Price</p>
+                    <p className="font-accent text-4xl text-copper-soft mt-1">₹{product.price}</p>
                   </div>
                 </div>
 

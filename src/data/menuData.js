@@ -5,8 +5,7 @@ export const menuData = {
       name: 'Choco Walnut Brownie',
       description:
         'Chocolate brownie made with pure Amul butter, filled with milk chocolate chunks and roasted walnuts. A great balance of chocolate and nutty crunch.',
-      price: 780,
-      salePrice: 585,
+      price: 800,
       weight: '1/2 Kg (6 pcs)',
       isNew: false,
       isBestseller: true,
@@ -28,8 +27,7 @@ export const menuData = {
       name: 'Triple Chocolate Brownie',
       description:
         'Chocolate brownie made with pure Amul butter and filled with dark, milk, and white chocolate chunks. A perfect choice for true chocolate lovers.',
-      price: 850,
-      salePrice: 640,
+      price: 800,
       weight: '1/2 Kg (6 pcs)',
       isNew: false,
       isBestseller: true,
@@ -50,8 +48,7 @@ export const menuData = {
       name: 'Red Velvet Brownie',
       description:
         'Red velvet brownie made with pure Amul butter and filled with white chocolate chunks. Topped with white chocolate chips for a sweet finish.',
-      price: 750,
-      salePrice: 560,
+      price: 800,
       weight: '1/2 Kg (6 pcs)',
       isNew: true,
       isBestseller: false,
@@ -71,8 +68,7 @@ export const menuData = {
       name: 'Biscoff Brownie',
       description:
         'Biscoff brownie made with pure Amul butter and topped with imported Biscoff spread and Lotus Biscoff biscuit crumbs. Perfect for Biscoff lovers.',
-      price: 780,
-      salePrice: 585,
+      price: 800,
       weight: '1/2 Kg (6 pcs)',
       isNew: false,
       isBestseller: true,
@@ -92,8 +88,7 @@ export const menuData = {
       name: 'Classic Walnut Brownie',
       description:
         'Classic chocolate brownie made with pure Amul butter and loaded with roasted walnuts. Finished with a light chocolate drizzle for extra flavor.',
-      price: 780,
-      salePrice: 585,
+      price: 800,
       weight: '1/2 Kg (6 pcs)',
       isNew: false,
       isBestseller: false,
@@ -113,8 +108,7 @@ export const menuData = {
       name: 'Nutella Brownie',
       description:
         'Nutella brownie made with pure Amul butter, topped with Nutella spread and roasted hazelnuts. Smooth, nutty, and full of Nutella flavor.',
-      price: 750,
-      salePrice: 565,
+      price: 800,
       weight: '1/2 Kg (6 pcs)',
       isNew: true,
       isBestseller: true,
@@ -136,8 +130,7 @@ export const menuData = {
       name: 'Biscoff White Chocolate Brownie',
       description:
         'White chocolate brownie made with pure Amul butter, topped with creamy Biscoff spread, white chocolate chips, and Biscoff biscuit crumbs. Specially for Biscoff lovers.',
-      price: 790,
-      salePrice: 595,
+      price: 800,
       weight: '1/2 Kg (6 pcs)',
       isNew: false,
       isBestseller: true,
@@ -157,8 +150,7 @@ export const menuData = {
       name: 'Triple Chocolate White Brownie',
       description:
         'White chocolate brownie made with pure Amul butter and filled with dark, milk, and white chocolate chunks. A perfect choice for true chocolate lovers.',
-      price: 840,
-      salePrice: 630,
+      price: 800,
       weight: '1/2 Kg (6 pcs)',
       isNew: false,
       isBestseller: false,
@@ -179,8 +171,7 @@ export const menuData = {
       name: 'Nutella White Chocolate Brownie',
       description:
         'White chocolate brownie made with pure Amul butter, layered with creamy Nutella and finished with white chocolate swirls. A favorite for Nutella fans.',
-      price: 780,
-      salePrice: 585,
+      price: 800,
       weight: '1/2 Kg (6 pcs)',
       isNew: true,
       isBestseller: true,
@@ -200,8 +191,7 @@ export const menuData = {
       name: 'Classic White Chocolate Brownie',
       description:
         'White chocolate brownie made with pure Amul butter and filled with white chocolate chunks and chips. Simple and perfect for white chocolate lovers.',
-      price: 750,
-      salePrice: 560,
+      price: 800,
       weight: '1/2 Kg (6 pcs)',
       isNew: false,
       isBestseller: false,
@@ -225,7 +215,6 @@ export const menuData = {
       description:
         'Classic butter mawa cake made with 100% pure Amul butter and rich mawa (khawa/khoya). Lightly sweet and best enjoyed with tea or coffee.',
       price: 300,
-      salePrice: 225,
       weight: '600 gms (Jumbo)',
       isNew: false,
       isBestseller: true,
@@ -246,7 +235,6 @@ export const menuData = {
       description:
         'Chocolate walnut cake made with pure cocoa powder, 100% pure Amul butter and filled with plenty of walnuts inside. Topped with nuts for a crunchy finish.',
       price: 450,
-      salePrice: 337,
       weight: '700 gms (Jumbo)',
       isNew: false,
       isBestseller: false,
@@ -270,7 +258,6 @@ export const menuData = {
       description:
         'Filled with brownie cubes and melted milk chocolate, topped with white and dark chocolate biscuit balls. Smooth chocolate with crunchy bites.',
       price: 300,
-      salePrice: 225,
       weight: '350 gms approx.',
       isNew: false,
       isBestseller: false,
@@ -287,7 +274,6 @@ export const menuData = {
       description:
         'Filled with brownie cubes and 100% pure Biscoff spread, topped with Lotus Biscoff biscuit pieces and white chocolate chips. Packed with full Biscoff flavor.',
       price: 350,
-      salePrice: 260,
       weight: '350 gms approx.',
       isNew: true,
       isBestseller: true,
@@ -304,7 +290,6 @@ export const menuData = {
       description:
         'Filled with brownie cubes and pure Nutella hazelnut spread, then topped with roasted hazelnuts. Creamy, nutty, and full of Nutella taste.',
       price: 300,
-      salePrice: 225,
       weight: '350 gms approx.',
       isNew: false,
       isBestseller: false,

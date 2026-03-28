@@ -43,14 +43,8 @@ export const SignatureReveal = ({ section, products, onPrimaryCta, onProductSele
 
               <div className="mt-auto pt-6 flex items-end justify-between border-t border-copper-soft/10">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.18em] text-ink-muted/80">Showroom Price</p>
-                  <p className="font-accent text-3xl text-copper-soft">₹{product.salePrice}</p>
-                  <p className="text-xs text-ink-muted">
-                    <span className="line-through">₹{product.price}</span> •
-                    <span className="ml-1 font-semibold text-emerald-700">
-                      {Math.round((1 - product.salePrice / product.price) * 100)}% off
-                    </span>
-                  </p>
+                  <p className="text-xs uppercase tracking-[0.18em] text-ink-muted/80">Price</p>
+                  <p className="font-accent text-3xl text-copper-soft">₹{product.price}</p>
                 </div>
                 <span className="inline-flex items-center gap-2 rounded-full bg-copper-soft px-4 py-2 text-sm font-semibold text-white transition hover:bg-copper-dark">
                   View

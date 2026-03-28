@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 
 export const ProductCard = ({ product, onSelect, priority = false }) => {
   const reducedMotion = useReducedMotion();
-  const discount = Math.round((1 - product.salePrice / product.price) * 100);
+
 
   return (
     <motion.button
@@ -60,15 +60,9 @@ export const ProductCard = ({ product, onSelect, priority = false }) => {
             <div>
               <p className="text-xs uppercase tracking-wider text-ink-muted">Price</p>
               <div className="flex items-baseline gap-2">
-                <p className="font-accent text-3xl text-copper-soft">₹{product.salePrice}</p>
-                {discount > 0 && <span className="text-sm text-ink-muted line-through">₹{product.price}</span>}
+                <p className="font-accent text-3xl text-copper-soft">₹{product.price}</p>
               </div>
             </div>
-            {discount > 0 && (
-              <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">
-                {discount}% OFF
-              </span>
-            )}
           </div>
         </div>
       </div>
